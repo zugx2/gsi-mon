@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Electron boilerplate</title>
+		<link rel="stylesheet" href="index.css">
+	</head>
+	<body>
+		<script>
+			var ipcRenderer = require('electron').ipcRenderer;
+			var renderjson = require('renderjson');
+			ipcRenderer.on('store-data', function(event,data){
+				console.log(event);
+				console.log(data);
+				document.getElementById('jsonview').append(renderjson(data));
+			});
+		</script>
+		<div class="container">
+			<header>
+				<h1>json poster</h1>
+			</header>
+
+			<section class="main">
+					<div id="jsonview">
+			</section>
+			<footer></footer>
+		</div>
+	</body>
+</html>
